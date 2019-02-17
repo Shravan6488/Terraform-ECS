@@ -1,5 +1,5 @@
 module "cpu_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git"
+  source     = "git::https://github.com/Shravan6488/terraform-label.git"
   name       = "${var.name}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
@@ -7,7 +7,7 @@ module "cpu_utilization_high_alarm_label" {
 }
 
 module "cpu_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git"
+  source     = "git::https://github.com/Shravan6488/terraform-label.git"
   name       = "${var.name}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
@@ -15,7 +15,7 @@ module "cpu_utilization_low_alarm_label" {
 }
 
 module "memory_utilization_high_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git"
+  source     = "git::https://github.com/Shravan6488/terraform-label.git"
   name       = "${var.name}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"
@@ -23,7 +23,7 @@ module "memory_utilization_high_alarm_label" {
 }
 
 module "memory_utilization_low_alarm_label" {
-  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git"
+  source     = "git::https://github.com/Shravan6488/terraform-label.git"
   name       = "${var.name}"
   namespace  = "${var.namespace}"
   stage      = "${var.stage}"

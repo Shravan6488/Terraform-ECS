@@ -1,4 +1,8 @@
 # Example usage of the Alarm for monitoring the ECR cluster metric alone.
+#### change credentials
+
+change Access_key and Secrete key credentials.
+If you dont want to provide you can use role base acess as well.
 
 To test this example, clone the repoistry, cd into this example directory and run:
 ```bash

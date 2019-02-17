@@ -5,7 +5,7 @@ variable "name" {
 
 variable "namespace" {
   type        = "string"
-  description = "Namespace (e.g. `cp` or `cloudposse`)"
+  description = "Namespace (e.g. `ebot7')"
 }
 
 variable "delimiter" {

@@ -1,7 +1,7 @@
 provider "aws" {
-  access_key = "AKIAINQNYJ6OIQMODPTA"
-  secret_key = "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"
-  region = "eu-central-1"
+  access_key = ""
+  secret_key = ""
+  region = ""
 }
 
 module "alarms" {

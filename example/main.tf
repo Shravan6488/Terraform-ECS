@@ -31,3 +31,56 @@ resource "aws_ecs_task_definition" "service" {
     expression = "attribute:ecs.availability-zone in [eu-central-1a, eu-central-1b]"
   }
 }
+module "eg_prod_bastion_abc_label" {
+  source     = "git::https://github.com/Shravan6488/terraform-label.git?ref=master"
+  namespace  = "eg"
+  stage      = "prod"
+  name       = "bastion"
+  attributes = ["abc"]
+  delimiter  = "-"
+  tags       = "${map("BusinessUnit", "ABC")}"
+}
+
+resource "aws_security_group" "eg_prod_bastion_abc" {
+  name = "${module.eg_prod_bastion_abc_label.id}"
+  tags = "${module.eg_prod_bastion_abc_label.tags}"
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "eg_prod_bastion_abc" {
+  instance_type          = "t2.micro"
+  tags                   = "${module.eg_prod_bastion_abc_label.tags}"
+  vpc_security_group_ids = ["${aws_security_group.eg_prod_bastion_abc.id}"]
+}
+
+module "eg_prod_bastion_xyz_label" {
+  source     = "git::https://github.com/Shravan6488/terraform-label.git?ref=master"
+  namespace  = "eg"
+  stage      = "prod"
+  name       = "bastion"
+  attributes = ["xyz"]
+  delimiter  = "-"
+  tags       = "${map("BusinessUnit", "XYZ")}"
+}
+
+resource "aws_security_group" "eg_prod_bastion_xyz" {
+  name = "module.eg_prod_bastion_xyz_label.id"
+  tags = "${module.eg_prod_bastion_xyz_label.tags}"
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "eg_prod_bastion_xyz" {
+  instance_type          = "t2.micro"
+  tags                   = "${module.eg_prod_bastion_xyz_label.tags}"
+  vpc_security_group_ids = ["${aws_security_group.eg_prod_bastion_xyz.id}"]
+}
